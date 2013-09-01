@@ -1,4 +1,4 @@
-package com.beepscore.BSNotes;
+package com.beepscore.bsnotes;
 
 import android.app.Activity;
 import android.os.Bundle;
