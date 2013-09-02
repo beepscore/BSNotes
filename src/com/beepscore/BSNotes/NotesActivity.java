@@ -23,9 +23,14 @@ public class NotesActivity extends Activity {
         datasource = new NotesDataSource(this);
         List<NoteItem> notes = datasource.findAll();
         NoteItem note = notes.get(0);
-
+        note.setText("Updated!");
         datasource.update(note);
 
-        Log.i("NOTES", note.getKey());
+        notes = datasource.findAll();
+        // Java converts integer to string
+        Log.i("NOTES_TAG", "notes.size(): " + notes.size());
+        note = notes.get(0);
+
+        Log.i("NOTES_TAG", "onCreate" + note.getKey() + ": " + note.getText());
     }
 }

@@ -2,9 +2,9 @@ package com.beepscore.bsnotes.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by stevebaker on 9/2/13.
@@ -24,14 +24,27 @@ public class NotesDataSource {
     }
 
     public List<NoteItem> findAll() {
+
+        // Java Map is an unordered collection (a dictionary)
+        // shared preferences doesn't know value type
+        Map<String, ?> notesMap = notePrefs.getAll();
+
+        // TreeSet sorts the keySet
+        SortedSet<String> keys = new TreeSet<String>(notesMap.keySet());
+
         // ArrayList is a concrete class that implements List interface.
         // Using polymorphism.
         // ArrayList stores data in the order it was added.
         List<NoteItem> noteList = new ArrayList<NoteItem>();
 
-        // add one note
-        NoteItem note = NoteItem.getNew();
-        noteList.add(note);
+        // enumerate over keys
+        for (String key : keys) {
+            NoteItem note = new NoteItem();
+            note.setKey(key);
+            note.setText((String) notesMap.get(key));
+            noteList.add(note);
+            Log.i("NOTES_TAG", "findAll()" + note.getKey() + ": " + note.getText());
+        }
 
         return noteList;
     }
