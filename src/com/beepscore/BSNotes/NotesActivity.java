@@ -20,9 +20,11 @@ public class NotesActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        datasource = new NotesDataSource();
+        datasource = new NotesDataSource(this);
         List<NoteItem> notes = datasource.findAll();
         NoteItem note = notes.get(0);
+
+        datasource.update(note);
 
         Log.i("NOTES", note.getKey());
     }
