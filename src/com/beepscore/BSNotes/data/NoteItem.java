@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+// Model object.
+// Use default super class java.lang.Object
+// This is a "pojo", plain old java object
 public class NoteItem {
 
     private String key;
