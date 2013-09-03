@@ -50,4 +50,8 @@ public class NoteItem {
         return note;
     }
 
+    @Override
+    public String toString() {
+        return this.getText();
+    }
 }
