@@ -1,9 +1,7 @@
 package com.beepscore.bsnotes;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import com.beepscore.bsnotes.data.NoteItem;
 import com.beepscore.bsnotes.data.NotesDataSource;
