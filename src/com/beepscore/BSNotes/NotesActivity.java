@@ -27,9 +27,9 @@ public class NotesActivity extends ListActivity {
 
     private void refreshDisplay() {
         notesList = datasource.findAll();
-        ArrayAdapter<NoteItem> adapter =
-        new ArrayAdapter<NoteItem>(this,
-                android.R.layout.simple_list_item_1,
+        ArrayAdapter<NoteItem> adapter;
+        adapter = new ArrayAdapter<NoteItem>(this,
+                R.layout.list_item_layout,
                 notesList);
         setListAdapter(adapter);
     }
