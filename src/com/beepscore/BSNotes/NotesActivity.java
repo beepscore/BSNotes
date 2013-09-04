@@ -3,9 +3,11 @@ package com.beepscore.bsnotes;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.beepscore.bsnotes.data.NoteItem;
@@ -19,6 +21,8 @@ public class NotesActivity extends ListActivity {
      */
 
     private static final int EDITOR_ACTIVITY_REQUEST = 1001;
+    private static final int MENU_DELETE_ID = 1002;
+    private int currentNoteId;
 
     private NotesDataSource datasource;
     List<NoteItem> notesList;
@@ -28,8 +32,31 @@ public class NotesActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        registerForContextMenu(getListView());
+
         datasource = new NotesDataSource(this);
         refreshDisplay();
+    }
+
+    /**
+     * Context menu methods
+     */
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        currentNoteId = (int) info.id;
+        menu.add(0, MENU_DELETE_ID, 0, "Delete");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (MENU_DELETE_ID == item.getItemId()) {
+            NoteItem note = notesList.get(currentNoteId);
+            datasource.remove(note);
+            refreshDisplay();
+        }
+        return super.onContextItemSelected(item);
     }
 
     @Override
