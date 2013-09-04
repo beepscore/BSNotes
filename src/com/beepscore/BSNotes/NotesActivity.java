@@ -46,7 +46,7 @@ public class NotesActivity extends ListActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
         currentNoteId = (int) info.id;
-        menu.add(0, MENU_DELETE_ID, 0, "Delete");
+        menu.add(0, MENU_DELETE_ID, 0, R.string.delete);
     }
 
     @Override

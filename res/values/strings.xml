@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">BSNotes</string>
     <string name="action_create">Create</string>
+    <string name="delete">Delete</string>
 </resources>
