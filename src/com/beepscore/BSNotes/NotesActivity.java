@@ -1,8 +1,10 @@
 package com.beepscore.bsnotes;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import com.beepscore.bsnotes.data.NoteItem;
 import com.beepscore.bsnotes.data.NotesDataSource;
@@ -41,4 +43,29 @@ public class NotesActivity extends ListActivity {
                 notesList);
         setListAdapter(adapter);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (R.id.action_create == item.getItemId()) {
+            createNote();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void createNote() {
+        NoteItem note = NoteItem.getNew();
+
+        // Android will instantiate NoteEditorActivity from class
+        Intent intent = new Intent(this, NoteEditorActivity.class);
+
+        // pass a few small objects, easier than passing a large object
+        intent.putExtra("key", note.getKey());
+        intent.putExtra("text", note.getText());
+
+        // constant
+        int CREATE_REQUEST_CODE = 1001;
+        startActivityForResult(intent, CREATE_REQUEST_CODE);
+    }
+
 }
