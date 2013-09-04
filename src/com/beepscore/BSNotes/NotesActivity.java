@@ -89,8 +89,8 @@ public class NotesActivity extends ListActivity {
         NoteItem note = notesList.get(position);
 
         Intent intent = new Intent(this, NoteEditorActivity.class);
-        intent.putExtra("key", note.getKey());
-        intent.putExtra("text", note.getText());
+        intent.putExtra(NoteItem.KEY, note.getKey());
+        intent.putExtra(NoteItem.TEXT, note.getText());
 
         // constant
         startActivityForResult(intent, EDITOR_ACTIVITY_REQUEST);
@@ -102,8 +102,8 @@ public class NotesActivity extends ListActivity {
         if (EDITOR_ACTIVITY_REQUEST == requestCode
             && RESULT_OK == resultCode) {
             NoteItem note = new NoteItem();
-            note.setKey(data.getStringExtra("key"));
-            note.setText(data.getStringExtra("text"));
+            note.setKey(data.getStringExtra(NoteItem.KEY));
+            note.setText(data.getStringExtra(NoteItem.TEXT));
             datasource.update(note);
             refreshDisplay();
         }
@@ -116,8 +116,8 @@ public class NotesActivity extends ListActivity {
         Intent intent = new Intent(this, NoteEditorActivity.class);
 
         // pass a few small objects, easier than passing a large object
-        intent.putExtra("key", note.getKey());
-        intent.putExtra("text", note.getText());
+        intent.putExtra(NoteItem.KEY, note.getKey());
+        intent.putExtra(NoteItem.TEXT, note.getText());
 
         // constant
         startActivityForResult(intent, EDITOR_ACTIVITY_REQUEST);

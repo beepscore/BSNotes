@@ -27,8 +27,8 @@ public class NoteEditorActivity extends Activity {
         // author calls intent to recreate the note,
         // probably would be clearer to pass the note
         note = new NoteItem();
-        note.setKey(intent.getStringExtra("key"));
-        note.setText(intent.getStringExtra("text"));
+        note.setKey(intent.getStringExtra(NoteItem.KEY));
+        note.setText(intent.getStringExtra(NoteItem.TEXT));
 
         EditText et = (EditText) findViewById(R.id.noteText);
         et.setText(note.getText());
@@ -58,8 +58,8 @@ public class NoteEditorActivity extends Activity {
         String noteText = et.getText().toString();
 
         Intent intent = new Intent();
-        intent.putExtra("key", note.getKey());
-        intent.putExtra("text", noteText);
+        intent.putExtra(NoteItem.KEY, note.getKey());
+        intent.putExtra(NoteItem.TEXT, noteText);
         setResult(RESULT_OK, intent);
 
         // return to parent activity

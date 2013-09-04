@@ -13,6 +13,9 @@ public class NoteItem {
     private String key;
     private String text;
 
+    public static final String KEY = "key";
+    public static final String TEXT = "text";
+
     // accessor methods
     public String getKey() {
         return key;
