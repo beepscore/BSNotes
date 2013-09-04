@@ -18,8 +18,8 @@ public class NotesActivity extends ListActivity {
      * Called when the activity is first created.
      */
 
-    public static final int EDITOR_ACTIVITY_REQUEST = 1001;
-    
+    private static final int EDITOR_ACTIVITY_REQUEST = 1001;
+
     private NotesDataSource datasource;
     List<NoteItem> notesList;
 
