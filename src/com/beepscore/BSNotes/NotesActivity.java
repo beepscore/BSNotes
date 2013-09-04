@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import com.beepscore.bsnotes.data.NoteItem;
 import com.beepscore.bsnotes.data.NotesDataSource;
 
@@ -51,6 +53,19 @@ public class NotesActivity extends ListActivity {
             createNote();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        NoteItem note = notesList.get(position);
+
+        Intent intent = new Intent(this, NoteEditorActivity.class);
+        intent.putExtra("key", note.getKey());
+        intent.putExtra("text", note.getText());
+
+        // constant
+        int CREATE_REQUEST_CODE = 1001;
+        startActivityForResult(intent, CREATE_REQUEST_CODE);
     }
 
     private void createNote() {
