@@ -69,6 +69,19 @@ public class NotesActivity extends ListActivity {
         startActivityForResult(intent, EDITOR_ACTIVITY_REQUEST);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (EDITOR_ACTIVITY_REQUEST == requestCode
+            && RESULT_OK == resultCode) {
+            NoteItem note = new NoteItem();
+            note.setKey(data.getStringExtra("key"));
+            note.setText(data.getStringExtra("text"));
+            datasource.update(note);
+            refreshDisplay();
+        }
+    }
+
     private void createNote() {
         NoteItem note = NoteItem.getNew();
 
