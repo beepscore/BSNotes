@@ -18,6 +18,8 @@ public class NotesActivity extends ListActivity {
      * Called when the activity is first created.
      */
 
+    public static final int EDITOR_ACTIVITY_REQUEST = 1001;
+    
     private NotesDataSource datasource;
     List<NoteItem> notesList;
 
@@ -64,8 +66,7 @@ public class NotesActivity extends ListActivity {
         intent.putExtra("text", note.getText());
 
         // constant
-        int CREATE_REQUEST_CODE = 1001;
-        startActivityForResult(intent, CREATE_REQUEST_CODE);
+        startActivityForResult(intent, EDITOR_ACTIVITY_REQUEST);
     }
 
     private void createNote() {
@@ -79,8 +80,7 @@ public class NotesActivity extends ListActivity {
         intent.putExtra("text", note.getText());
 
         // constant
-        int CREATE_REQUEST_CODE = 1001;
-        startActivityForResult(intent, CREATE_REQUEST_CODE);
+        startActivityForResult(intent, EDITOR_ACTIVITY_REQUEST);
     }
 
 }
