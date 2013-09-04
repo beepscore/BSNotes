@@ -42,6 +42,8 @@ public class NoteEditorActivity extends Activity {
         if (android.R.id.home == item.getItemId()) {
             saveAndFinish();
         }
+        // return false tells caller that current method has handled event,
+        // caller does not need to do anything else.
         return false;
     }
 
