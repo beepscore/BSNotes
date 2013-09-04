@@ -2,6 +2,7 @@ package com.beepscore.bsnotes;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ArrayAdapter;
 import com.beepscore.bsnotes.data.NoteItem;
 import com.beepscore.bsnotes.data.NotesDataSource;
@@ -23,6 +24,13 @@ public class NotesActivity extends ListActivity {
 
         datasource = new NotesDataSource(this);
         refreshDisplay();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     private void refreshDisplay() {
