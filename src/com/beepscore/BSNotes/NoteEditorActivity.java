@@ -37,6 +37,12 @@ public class NoteEditorActivity extends Activity {
     }
 
     @Override
+    // called when hardware back button pressed
+    public void onBackPressed() {
+        saveAndFinish();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (android.R.id.home == item.getItemId()) {
