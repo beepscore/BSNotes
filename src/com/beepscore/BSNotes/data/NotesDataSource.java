@@ -28,6 +28,10 @@ public class NotesDataSource {
         // Java Map is an unordered collection (a dictionary)
         // shared preferences doesn't know value type
         Map<String, ?> notesMap = notePrefs.getAll();
+        if (null == notesMap) {
+            // avoid potential NullPointerException
+            notesMap = Collections.emptyMap();
+        }
 
         // TreeSet sorts the keySet
         SortedSet<String> keys = new TreeSet<String>(notesMap.keySet());
