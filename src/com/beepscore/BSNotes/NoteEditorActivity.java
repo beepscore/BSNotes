@@ -3,6 +3,7 @@ package com.beepscore.bsnotes;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.EditText;
 import com.beepscore.bsnotes.data.NoteItem;
 
@@ -18,6 +19,9 @@ public class NoteEditorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_editor);
 
+        // change launcher icon to options button with id home
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = this.getIntent();
 
         // author calls intent to recreate the note,
@@ -32,4 +36,25 @@ public class NoteEditorActivity extends Activity {
         et.setSelection(note.getText().length());
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (android.R.id.home == item.getItemId()) {
+            saveAndFinish();
+        }
+        return false;
+    }
+
+    private void saveAndFinish() {
+        EditText et = (EditText) findViewById(R.id.noteText);
+        String noteText = et.getText().toString();
+
+        Intent intent = new Intent();
+        intent.putExtra("key", note.getKey());
+        intent.putExtra("text", noteText);
+        setResult(RESULT_OK, intent);
+
+        // return to parent activity
+        finish();
+    }
 }
