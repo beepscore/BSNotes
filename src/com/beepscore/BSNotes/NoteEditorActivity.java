@@ -1,16 +1,16 @@
 package com.beepscore.bsnotes;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.EditText;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.beepscore.bsnotes.data.NoteItem;
 
 /**
  * Created by stevebaker on 9/3/13.
  */
-public class NoteEditorActivity extends Activity {
+public class NoteEditorActivity extends SherlockActivity {
 
     private NoteItem note;
 
@@ -20,7 +20,9 @@ public class NoteEditorActivity extends Activity {
         setContentView(R.layout.activity_note_editor);
 
         // change launcher icon to options button with id home
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        // getActionBar() doesn't exist in older versions of Android
+        // instead use ActionBarSherlock method getSupportActionBar()
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = this.getIntent();
 

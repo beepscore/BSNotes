@@ -1,21 +1,21 @@
 package com.beepscore.bsnotes;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.beepscore.bsnotes.data.NoteItem;
 import com.beepscore.bsnotes.data.NotesDataSource;
 
 import java.util.List;
 
-public class NotesActivity extends ListActivity {
+public class NotesActivity extends SherlockListActivity {
     /**
      * Called when the activity is first created.
      */
@@ -50,7 +50,7 @@ public class NotesActivity extends ListActivity {
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public boolean onContextItemSelected(android.view.MenuItem item) {
         if (MENU_DELETE_ID == item.getItemId()) {
             NoteItem note = notesList.get(currentNoteId);
             datasource.remove(note);
@@ -62,7 +62,7 @@ public class NotesActivity extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getSherlock().getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
