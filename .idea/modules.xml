@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ActionBarSherlock/actionbarsherlock/actionbarsherlock.iml" filepath="$PROJECT_DIR$/ActionBarSherlock/actionbarsherlock/actionbarsherlock.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.beepscore.bsnotes.iml" filepath="$PROJECT_DIR$/com.beepscore.bsnotes.iml" />
     </modules>
   </component>
